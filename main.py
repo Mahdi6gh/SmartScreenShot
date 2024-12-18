@@ -43,7 +43,7 @@ def do():
                 mines_distane=distane-100
                 if Listofln[12][2]<Listofln[12-2][2]:
                     volume.SetMasterVolumeLevel(mines_distane, None)
-
+#GIT
 
 
 

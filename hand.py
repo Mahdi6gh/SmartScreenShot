@@ -34,3 +34,4 @@ class HandDetector():
             if drawing:
                 cv2.circle(frame, (x, y), 8, (105,105,15),-1)
         return landmarksList
+    #GIT
