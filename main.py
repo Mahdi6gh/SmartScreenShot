@@ -1,7 +1,14 @@
 import cv2
 import hand
 from PIL import ImageGrab
+from comtypes import CLSCTX_ALL
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+devices = AudioUtilities.GetSpeakers()
+interface = devices.Activate(
+    IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+volume = interface.QueryInterface(IAudioEndpointVolume)
 Detecctor=hand.HandDetector()
+
 
 def do():
     cam = cv2.VideoCapture(0)
@@ -27,5 +34,19 @@ def do():
 
             # Close the screenshot
             screenshot.close()
+            continue
+        if len(Listofln) > 0:
+            distane=Listofln[4][2] - Listofln[8][2]
+            #print(distane)
+            if distane<=100and distane>=35 :
+                print(distane)
+                mines_distane=distane-100
+                if Listofln[12][2]<Listofln[12-2][2]:
+                    volume.SetMasterVolumeLevel(mines_distane, None)
+
+
+
+
+
             continue
 do()

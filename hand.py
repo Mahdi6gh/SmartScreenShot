@@ -6,7 +6,7 @@ class HandDetector():
         self.mediapipeHand = mp.solutions.hands
         self.hands = self.mediapipeHand.Hands(max_num_hands=1,min_detection_confidence=0.8,min_tracking_confidence=0.5)
         self.Draw = mp.solutions.drawing_utils
-    def detect(self, frame,drawing=True):
+    def detect(self, frame,drawing=False):
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         self.results = self.hands.process(rgb)
         if self.results.multi_hand_landmarks:
@@ -14,11 +14,10 @@ class HandDetector():
                 for id, lm in enumerate(hand_landmarks.landmark):
                     h, w, c = frame.shape
                     x, y = int(lm.x * w), int(lm.y * h)
-
-                    if id == 4:
-                        cv2.circle(frame, (x, y), 15, (105,105,15))
+                    cv2.circle(frame, (x, y), 15, (105, 105, 15))
                 if drawing:
-                    self.Draw.draw_landmarks(frame, hand_landmarks, self.mediapipeHand.HAND_CONNECTIONS)
+                    self.Draw.draw_landmarks(frame, hand_landmarks)
+
         return frame
     def positon(self,frame,drawing=True,Handnum=0):
         landmarksList = []
