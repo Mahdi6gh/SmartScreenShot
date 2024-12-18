@@ -2,13 +2,13 @@
 a python app that can  control your windows with your hand move.
 > [!IMPORTANT]
 > ---
->for use this feature first of all install.
+>for use this feature first of all install python and this libraries.
  ---
 _pip install mediapipe._
 >---
-pip install openCV_python.
+_pip install openCV_python._
 
-[use command]
+>[use command]
 _git clone https://github.com/Mahdi6gh/SmartScreenShot_
 >---
 then _cd SmartScreenShot_
